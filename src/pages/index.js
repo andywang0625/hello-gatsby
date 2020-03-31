@@ -4,18 +4,27 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import Container from '@material-ui/core/Container';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import { Button } from "@material-ui/core"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+const useStyles = makeStyles((theme) =>
+  createStyles({
+      title:{
+        width:"100%",
+      }
+  }),
+);
+
+export default function IndexPage(){
+  const classes = useStyles();
+  return(
+    <Container maxWidth="sm">
+    <div className={classes.title} >
+      <Typography component="span" align="center">Hello Gatsby!</Typography>
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
-
-export default IndexPage
+    <Button component={Link} to="page-2" color="primary" variant="contained">Go to Another Page</Button>
+    </Container>
+  )
+}
